@@ -3,211 +3,184 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Для тебя ♡</title>
+  <title>DD.MM.YYYY</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap" rel="stylesheet">
   <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
 
   body {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    min-height: 100dvh;
+    background: #fff;
+    color: #000;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
     min-height: 100dvh;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 1.5rem;
-    background: linear-gradient(145deg, #fce4ec 0%, #f8bbd0 35%, #e1bee7 70%, #d1c4e9 100%);
-    background-attachment: fixed;
+    flex-direction: column;
+    max-width: 595px;
+    margin: 0 auto;
+    padding: 2rem 1.25rem;
   }
 
-  .card {
-    background: rgba(255, 255, 255, 0.88);
-    backdrop-filter: blur(12px);
-    border-radius: 24px;
-    padding: 2.5rem 2rem;
-    max-width: 400px;
-    width: 100%;
-    box-shadow: 0 8px 40px rgba(180, 100, 140, 0.18);
-    text-align: center;
-    animation: fadeUp 0.7s ease;
+  /* ── Форма входа ── */
+
+  #login {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
   }
 
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to   { opacity: 1; }
-  }
-
-  .heart {
-    font-size: 2.4rem;
-    line-height: 1;
-    margin-bottom: 0.5rem;
-    animation: pulse 2s ease-in-out infinite;
-  }
-
-  @keyframes pulse {
-    0%, 100% { transform: scale(1); }
-    50%       { transform: scale(1.12); }
-  }
-
-  h2 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.75rem;
-    font-weight: 600;
-    color: #5c3d52;
-    margin-bottom: 0.25rem;
-  }
-
-  .subtitle {
-    font-size: 0.8rem;
-    color: #9b7a8e;
-    font-weight: 300;
-    margin-bottom: 1.75rem;
+  .label {
+    font-size: 14px;
+    letter-spacing: 0.02em;
+    margin-bottom: 1.5rem;
   }
 
   input[type="password"] {
     width: 100%;
-    padding: 14px 16px;
-    font-size: 16px;
-    font-family: 'Montserrat', sans-serif;
-    border: 1.5px solid #e8c4d4;
-    border-radius: 12px;
-    background: #fff;
-    color: #5c3d52;
+    padding: 12px 0;
+    font-size: 14px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    border: none;
+    border-bottom: 1px solid #000;
+    background: transparent;
+    color: #000;
     outline: none;
-    transition: border-color 0.2s, box-shadow 0.2s;
-  }
-
-  input[type="password"]:focus {
-    border-color: #d48aab;
-    box-shadow: 0 0 0 3px rgba(212, 138, 171, 0.2);
   }
 
   input[type="password"]::placeholder {
-    color: #c4a8b8;
+    color: #999;
   }
 
   #error {
-    color: #c0396b;
-    font-size: 0.78rem;
+    font-size: 12px;
     margin-top: 8px;
     min-height: 1.2em;
+    color: #000;
   }
 
   button {
-    margin-top: 1.25rem;
+    margin-top: 1.5rem;
     width: 100%;
-    padding: 14px;
-    font-size: 0.9rem;
-    font-family: 'Montserrat', sans-serif;
+    padding: 12px;
+    font-size: 14px;
+    font-family: 'Inter', sans-serif;
     font-weight: 500;
-    letter-spacing: 0.06em;
-    background: linear-gradient(135deg, #d48aab, #b06a8f);
+    letter-spacing: 0.04em;
+    background: #000;
     color: #fff;
-    border: none;
-    border-radius: 12px;
+    border: 1px solid #000;
     cursor: pointer;
-    transition: transform 0.15s, box-shadow 0.15s;
-    box-shadow: 0 4px 16px rgba(176, 106, 143, 0.35);
   }
 
   button:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 6px 20px rgba(176, 106, 143, 0.45);
+    background: #fff;
+    color: #000;
   }
 
-  button:active {
-    transform: translateY(0);
+  .login-photo {
+    margin-top: auto;
+    padding-top: 3rem;
+    width: 100%;
+    display: block;
+  }
+
+  .login-photo.hidden {
+    display: none;
   }
 
   /* ── Контент после входа ── */
 
   #content {
     display: none;
-    animation: fadeIn 1s ease;
+    flex: 1;
+    flex-direction: column;
   }
 
-  #content h1 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 2rem;
-    font-weight: 600;
-    color: #5c3d52;
-    margin-bottom: 1rem;
-    line-height: 1.3;
+  #content.visible {
+    display: flex;
   }
 
-  #content .photo {
-    width: 100%;
-    border-radius: 16px;
-    margin-bottom: 1.5rem;
-    box-shadow: 0 4px 20px rgba(180, 100, 140, 0.2);
-    display: block;
+  .letter {
+    font-size: 14px;
+    line-height: 1.6;
+    letter-spacing: 0.01em;
   }
 
-  #content .photo.hidden {
-    display: none;
-  }
-
-  #content .letter {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.15rem;
-    line-height: 1.75;
-    color: #6b4f60;
-    text-align: left;
-  }
-
-  #content .letter p {
+  .letter p {
     margin-bottom: 1rem;
   }
 
-  #content .letter p:last-child {
+  .letter p:last-child {
     margin-bottom: 0;
   }
 
-  #content .signature {
-    margin-top: 1.5rem;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.2rem;
-    font-style: italic;
-    color: #b06a8f;
-    text-align: right;
+  .a4-frame {
+    margin-top: auto;
+    padding-top: 3rem;
+    width: 100%;
+    aspect-ratio: 210 / 297;
+    border: 1px solid #000;
+    background: #fff;
+    position: relative;
+  }
+
+  .a4-frame img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: contain;
+  }
+
+  .a4-frame img.hidden {
+    display: none;
+  }
+
+  .a4-placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    color: #999;
+    letter-spacing: 0.04em;
+  }
+
+  .a4-frame.has-image .a4-placeholder {
+    display: none;
   }
   </style>
 </head>
 <body>
 
-  <div class="card">
+  <main class="page">
 
     <!-- Форма входа -->
     <div id="login">
-      <div class="heart">♡</div>
-      <h2>Для особенного человека</h2>
-      <p class="subtitle">Введи пароль, чтобы открыть</p>
-      <input type="password" id="pwd" placeholder="Пароль" autocomplete="off" />
+      <p class="label">DD.MM.YYYY</p>
+      <input type="password" id="pwd" placeholder="" autocomplete="off" />
       <div id="error"></div>
-      <button onclick="checkPassword()">Открыть</button>
+      <button onclick="checkPassword()">Confirm</button>
+
+      <!-- Фото внизу: положи файл images/login.jpg -->
+      <img
+        class="login-photo"
+        src="images/login.jpg"
+        alt=""
+        onerror="this.classList.add('hidden')"
+      />
     </div>
 
     <!-- Поздравление (видно только после пароля) -->
     <div id="content">
-      <!--
-        ФОТО: положи файл images/photo.jpg в папку проекта.
-        Если фото не нужно — удали тег <img> или добавь class="hidden".
-      -->
-      <img
-        class="photo"
-        src="images/photo.jpg"
-        alt=""
-        onerror="this.classList.add('hidden')"
-      />
-
-      <h1>С днём, моя любимая!</h1>
-
       <div class="letter">
         <p>
           Ты — самое тёплое, что есть в моей жизни.
@@ -220,10 +193,20 @@
         </p>
       </div>
 
-      <p class="signature">С любовью ♡</p>
+      <!-- Картинка A4: положи файл images/letter.jpg -->
+      <div class="a4-frame" id="a4-frame">
+        <img
+          id="letter-img"
+          src="images/letter.jpg"
+          alt=""
+          onerror="this.classList.add('hidden')"
+          onload="document.getElementById('a4-frame').classList.add('has-image')"
+        />
+        <span class="a4-placeholder">A4</span>
+      </div>
     </div>
 
-  </div>
+  </main>
 
   <script>
     const PASSWORDS = [
@@ -243,9 +226,9 @@
     function checkPassword() {
       if (PASSWORDS.includes(pwdInput.value.trim())) {
         document.getElementById('login').style.display = 'none';
-        document.getElementById('content').style.display = 'block';
+        document.getElementById('content').classList.add('visible');
       } else {
-        errorEl.textContent = 'Неверный пароль, попробуй ещё';
+        errorEl.textContent = 'Incorrect';
         pwdInput.value = '';
         pwdInput.focus();
       }

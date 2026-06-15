@@ -36,6 +36,13 @@
     flex-direction: column;
   }
 
+  .login-form {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
   .label {
     font-size: 14px;
     letter-spacing: 0.02em;
@@ -63,7 +70,7 @@
     font-size: 12px;
     margin-top: 8px;
     min-height: 1.2em;
-    color: #000;
+    color: #cc0000;
   }
 
   button {
@@ -86,8 +93,7 @@
   }
 
   .login-photo {
-    margin-top: auto;
-    padding-top: 3rem;
+    padding-top: 2rem;
     width: 35%;
     max-width: 160px;
     align-self: center;
@@ -152,10 +158,12 @@
 
     <!-- Форма входа -->
     <div id="login">
-      <p class="label">DD.MM.YYYY</p>
-      <input type="password" id="pwd" placeholder="" autocomplete="off" />
-      <div id="error"></div>
-      <button onclick="checkPassword()">Confirm</button>
+      <div class="login-form">
+        <p class="label">DD.MM.YYYY</p>
+        <input type="password" id="pwd" placeholder="" autocomplete="off" />
+        <div id="error"></div>
+        <button onclick="checkPassword()">Enter</button>
+      </div>
 
       <!-- Фото внизу: положи файл images/login.jpg -->
       <img

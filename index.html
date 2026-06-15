@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Для тебя ♡</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Montserrat', sans-serif;
+    min-height: 100dvh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1.5rem;
+    background: linear-gradient(145deg, #fce4ec 0%, #f8bbd0 35%, #e1bee7 70%, #d1c4e9 100%);
+    background-attachment: fixed;
+  }
+
+  .card {
+    background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(12px);
+    border-radius: 24px;
+    padding: 2.5rem 2rem;
+    max-width: 400px;
+    width: 100%;
+    box-shadow: 0 8px 40px rgba(180, 100, 140, 0.18);
+    text-align: center;
+    animation: fadeUp 0.7s ease;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+
+  .heart {
+    font-size: 2.4rem;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50%       { transform: scale(1.12); }
+  }
+
+  h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: #5c3d52;
+    margin-bottom: 0.25rem;
+  }
+
+  .subtitle {
+    font-size: 0.8rem;
+    color: #9b7a8e;
+    font-weight: 300;
+    margin-bottom: 1.75rem;
+  }
+
+  input[type="password"] {
+    width: 100%;
+    padding: 14px 16px;
+    font-size: 16px;
+    font-family: 'Montserrat', sans-serif;
+    border: 1.5px solid #e8c4d4;
+    border-radius: 12px;
+    background: #fff;
+    color: #5c3d52;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+
+  input[type="password"]:focus {
+    border-color: #d48aab;
+    box-shadow: 0 0 0 3px rgba(212, 138, 171, 0.2);
+  }
+
+  input[type="password"]::placeholder {
+    color: #c4a8b8;
+  }
+
+  #error {
+    color: #c0396b;
+    font-size: 0.78rem;
+    margin-top: 8px;
+    min-height: 1.2em;
+  }
+
+  button {
+    margin-top: 1.25rem;
+    width: 100%;
+    padding: 14px;
+    font-size: 0.9rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    background: linear-gradient(135deg, #d48aab, #b06a8f);
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.15s;
+    box-shadow: 0 4px 16px rgba(176, 106, 143, 0.35);
+  }
+
+  button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(176, 106, 143, 0.45);
+  }
+
+  button:active {
+    transform: translateY(0);
+  }
+
+  /* ── Контент после входа ── */
+
+  #content {
+    display: none;
+    animation: fadeIn 1s ease;
+  }
+
+  #content h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    font-weight: 600;
+    color: #5c3d52;
+    margin-bottom: 1rem;
+    line-height: 1.3;
+  }
+
+  #content .photo {
+    width: 100%;
+    border-radius: 16px;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 20px rgba(180, 100, 140, 0.2);
+    display: block;
+  }
+
+  #content .photo.hidden {
+    display: none;
+  }
+
+  #content .letter {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    line-height: 1.75;
+    color: #6b4f60;
+    text-align: left;
+  }
+
+  #content .letter p {
+    margin-bottom: 1rem;
+  }
+
+  #content .letter p:last-child {
+    margin-bottom: 0;
+  }
+
+  #content .signature {
+    margin-top: 1.5rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-style: italic;
+    color: #b06a8f;
+    text-align: right;
+  }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+
+    <!-- Форма входа -->
+    <div id="login">
+      <div class="heart">♡</div>
+      <h2>Для особенного человека</h2>
+      <p class="subtitle">Введи пароль, чтобы открыть</p>
+      <input type="password" id="pwd" placeholder="Пароль" autocomplete="off" />
+      <div id="error"></div>
+      <button onclick="checkPassword()">Открыть</button>
+    </div>
+
+    <!-- Поздравление (видно только после пароля) -->
+    <div id="content">
+      <!--
+        ФОТО: положи файл images/photo.jpg в папку проекта.
+        Если фото не нужно — удали тег <img> или добавь class="hidden".
+      -->
+      <img
+        class="photo"
+        src="images/photo.jpg"
+        alt=""
+        onerror="this.classList.add('hidden')"
+      />
+
+      <h1>С днём, моя любимая!</h1>
+
+      <div class="letter">
+        <p>
+          Ты — самое тёплое, что есть в моей жизни.
+          Каждый день с тобой — маленькое чудо, и я благодарен
+          за каждую минуту рядом с тобой.
+        </p>
+        <p>
+          Пусть этот день будет таким же прекрасным, как ты.
+          Я люблю тебя больше, чем слова могут выразить.
+        </p>
+      </div>
+
+      <p class="signature">С любовью ♡</p>
+    </div>
+
+  </div>
+
+  <script>
+    const PASSWORDS = [
+      '12072023',
+      '12.07.2023',
+      '07.12.2023',
+      '12 07 2023',
+    ];
+
+    const pwdInput = document.getElementById('pwd');
+    const errorEl  = document.getElementById('error');
+
+    pwdInput.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') checkPassword();
+    });
+
+    function checkPassword() {
+      if (PASSWORDS.includes(pwdInput.value.trim())) {
+        document.getElementById('login').style.display = 'none';
+        document.getElementById('content').style.display = 'block';
+      } else {
+        errorEl.textContent = 'Неверный пароль, попробуй ещё';
+        pwdInput.value = '';
+        pwdInput.focus();
+      }
+    }
+  </script>
+</body>
+</html>

@@ -88,8 +88,11 @@
   .login-photo {
     margin-top: auto;
     padding-top: 3rem;
-    width: 100%;
+    width: 35%;
+    max-width: 160px;
+    align-self: center;
     display: block;
+    height: auto;
   }
 
   .login-photo.hidden {
@@ -108,23 +111,7 @@
     display: flex;
   }
 
-  .letter {
-    font-size: 14px;
-    line-height: 1.6;
-    letter-spacing: 0.01em;
-  }
-
-  .letter p {
-    margin-bottom: 1rem;
-  }
-
-  .letter p:last-child {
-    margin-bottom: 0;
-  }
-
   .a4-frame {
-    margin-top: auto;
-    padding-top: 3rem;
     width: 100%;
     aspect-ratio: 210 / 297;
     border: 1px solid #000;
@@ -181,18 +168,6 @@
 
     <!-- Поздравление (видно только после пароля) -->
     <div id="content">
-      <div class="letter">
-        <p>
-          Ты — самое тёплое, что есть в моей жизни.
-          Каждый день с тобой — маленькое чудо, и я благодарен
-          за каждую минуту рядом с тобой.
-        </p>
-        <p>
-          Пусть этот день будет таким же прекрасным, как ты.
-          Я люблю тебя больше, чем слова могут выразить.
-        </p>
-      </div>
-
       <!-- Картинка A4: положи файл images/letter.jpg -->
       <div class="a4-frame" id="a4-frame">
         <img
